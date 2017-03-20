@@ -13,7 +13,10 @@ import * as layout from '../actions/layout';
   template: `
     <bc-layout>
       <bc-sidenav [open]="showSidenav$ | async">
-        <bc-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="Spotify quiz">
+          Spotify Quiz
+        </bc-nav-item>
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/collection" icon="book" hint="View your book collection">
           My Collection
         </bc-nav-item>
         <bc-nav-item (activate)="closeSidenav()" routerLink="/book/find" icon="search" hint="Find your next book!">
@@ -21,7 +24,7 @@ import * as layout from '../actions/layout';
         </bc-nav-item>
       </bc-sidenav>
       <bc-toolbar (openMenu)="openSidenav()">
-        Book Collection
+        Spotify Quiz
       </bc-toolbar>
 
       <router-outlet></router-outlet>

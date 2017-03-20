@@ -13,6 +13,7 @@ import { MaterialModule } from '@angular/material';
 import { ComponentsModule } from './components';
 import { BookEffects } from './effects/book';
 import { CollectionEffects } from './effects/collection';
+import { QuizEffects } from './effects/quiz';
 import { BookExistsGuard } from './guards/book-exists';
 
 import { AppComponent } from './containers/app';
@@ -20,9 +21,11 @@ import { FindBookPageComponent } from './containers/find-book-page';
 import { ViewBookPageComponent } from './containers/view-book-page';
 import { SelectedBookPageComponent } from './containers/selected-book-page';
 import { CollectionPageComponent } from './containers/collection-page';
+import { QuizPageComponent } from './containers/quiz-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
 
 import { GoogleBooksService } from './services/google-books';
+import { SpotifyService } from './services/spotify';
 
 import { routes } from './routes';
 import { reducer } from './reducers';
@@ -73,6 +76,7 @@ import { schema } from './db';
      */
     EffectsModule.run(BookEffects),
     EffectsModule.run(CollectionEffects),
+    EffectsModule.run(QuizEffects),
 
     /**
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
@@ -86,11 +90,13 @@ import { schema } from './db';
     SelectedBookPageComponent,
     ViewBookPageComponent,
     CollectionPageComponent,
+    QuizPageComponent,
     NotFoundPageComponent
   ],
   providers: [
     BookExistsGuard,
-    GoogleBooksService
+    GoogleBooksService,
+    SpotifyService
   ],
   bootstrap: [
     AppComponent

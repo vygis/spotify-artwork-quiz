@@ -39,6 +39,7 @@ import { combineReducers } from '@ngrx/store';
  */
 import * as fromSearch from './search';
 import * as fromBooks from './books';
+import * as fromQuiz from './quiz';
 import * as fromCollection from './collection';
 import * as fromLayout from './layout';
 
@@ -51,6 +52,7 @@ export interface State {
   search: fromSearch.State;
   books: fromBooks.State;
   collection: fromCollection.State;
+  quiz: fromQuiz.State;
   layout: fromLayout.State;
   router: fromRouter.RouterState;
 }
@@ -66,6 +68,7 @@ export interface State {
 const reducers = {
   search: fromSearch.reducer,
   books: fromBooks.reducer,
+  quiz: fromQuiz.reducer,
   collection: fromCollection.reducer,
   layout: fromLayout.reducer,
   router: fromRouter.routerReducer,
@@ -136,6 +139,18 @@ export const getSearchResults = createSelector(getBookEntities, getSearchBookIds
   return searchIds.map(id => books[id]);
 });
 
+
+/* QUIZ*/
+
+export const getQuizState = (state: State) => state.quiz;
+
+export const getQuizGenres = createSelector(getQuizState, fromQuiz.getGenres);
+export const getQuizCurrentAlbum = createSelector(getQuizState, fromQuiz.getCurrentAlbum);
+export const getQuizResults = createSelector(getQuizState, fromQuiz.getResults);
+export const shouldQuizDisplayAnswer = createSelector(getQuizState, fromQuiz.shouldDisplayAnswer);
+export const isQuizCurrentAnswerCorrect = createSelector(getQuizState, fromQuiz.isCurrentAnswerCorrect);
+export const isQuizCompleted = createSelector(getQuizState, fromQuiz.isCompleted);
+/* END OF QUIZ*/
 
 
 export const getCollectionState = (state: State) => state.collection;
